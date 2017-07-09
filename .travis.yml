@@ -1,0 +1,14 @@
+language: r
+before_install:
+  - cd src/
+r_github_packages:
+  - jimhester/lintr
+install:
+  - R -e "0" --args --bootstrap-packrat
+cache:
+  directories:
+    - $TRAVIS_BUILD_DIR/src/packrat/src
+    - $TRAVIS_BUILD_DIR/src/packrat/lib
+  packages: true
+script:
+    - Rscript run_tests.R
